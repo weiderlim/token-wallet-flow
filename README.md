@@ -1,12 +1,16 @@
-# Function tracking ERC20 token flow from a wallet address
+# Multipurporse ERC20 token flow tracking
 
-Anyone who wants to do some on-chain anaylsis of an ERC20 token (typically before choosing to invest) can use this function to better identify historical token flow. 
+This script is useful to do on-chain anaylsis of an ERC20 token (typically before choosing to invest) to identify historical token flow. 
 
-This function takes the wallet address, contract address (ERC20), and returns the destination wallets of which all the tokens that have been received (including their sum). 
+The functions available in this script : 
+1. *dest_flow* - Destination Flow : Takes a wallet address, contract address (ERC20), and returns the destination wallets of which all the tokens that have been received (including their sum). 
+- Useful to identify wallets of investors and team members, to see how much has been vested so far, and whether the tokens have been sold (sent to CEX's / DEX's) or not. 
 
-This functions is part of the analysis of the wallets of investors and team members, to see how much has been vested so far, and whether the tokens have been sold or not. 
+2. *recent_moves* - Recent Movements : Takes one (or many) wallet address(es), contract address (ERC20), number of days before, and returns any transactions that has happened in those wallets in the time period. 
+- Useful to identify if there has been recent transactions, due to recent news, token unlocks, etc. 
 
-How to read Covalent API ERC20 Transaction Logs : 
+
+### Notes on reading Covalent API ERC20 Transaction Logs : 
 1. Each item in 'items' is a unique transaction hash that the address has been involved in. 
 2. Each log in item is a transfer that has occurred. An item (transaction hash) can contain multiple transfers. 
 3. Logic flow : 
